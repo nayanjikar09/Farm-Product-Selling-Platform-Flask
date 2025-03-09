@@ -1,0 +1,89 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Add Agro Products
+{% endblock title %}
+
+{% block body %}
+<div class="container mt-5">
+    <h3 class="text-center">Add Agro Products</h3>
+
+    <!-- Flash Messages -->
+    {% with messages=get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <!-- Product Form -->
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form action="/addagroproduct" method="post">
+                
+                <!-- Farmer Name -->
+                <div class="form-group">
+                    <label for="username">Farmer Name</label>
+                    <input type="text" class="form-control" name="username" value="{{ current_user.username }}" id="username" readonly required>
+                </div>
+                <br>
+
+                <!-- Farmer Email -->
+                <div class="form-group">
+                    <label for="email">Farmer Email</label>
+                    <input type="email" class="form-control" name="email" value="{{ current_user.email }}" id="email" readonly required>
+                </div>
+                <br>
+
+                <!-- Contact Number -->
+                <div class="form-group">
+                    <label for="contact_num">Contact Number</label>
+                    <input type="text" class="form-control" name="contact_num" id="contact_num" placeholder="Enter contact number" required>
+                </div>
+                <br>
+
+                <!-- Farm Address -->
+                <div class="form-group">
+                    <label for="farmadd">Farm Address</label>
+                    <textarea class="form-control" name="farmadd" id="farmadd" placeholder="Enter farm address" required></textarea>
+                </div>
+                <br>
+
+                <!-- Product Name -->
+                <div class="form-group">
+                    <label for="productname">Product Name</label>
+                    <input type="text" class="form-control" name="productname" id="productname" placeholder="Enter product name" required>
+                </div>
+                <br>
+
+                <!-- Product Description -->
+                <div class="form-group">
+                    <label for="productdesc">Product Description</label>
+                    <textarea class="form-control" name="productdesc" id="productdesc" placeholder="Enter product description" required></textarea>
+                </div>
+                <br>
+
+                <!-- Product Price -->
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="number" class="form-control" name="price" id="price" placeholder="Enter product price" required min="0">
+                </div>
+                <br>
+
+                <!-- Unit -->
+                <div class="form-group">
+                    <label for="unit">Unit (e.g., kg, dozen)</label>
+                    <input type="text" class="form-control" name="unit" id="unit" placeholder="Enter unit of measurement" required>
+                </div>
+                <br>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-success btn-block">Add Product</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock body %}

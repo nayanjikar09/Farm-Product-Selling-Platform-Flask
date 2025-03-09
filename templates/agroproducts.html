@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Agro Products
+{% endblock title %}
+
+{% block body %}
+<div class="container mt-3">
+    <h3 class="text-center"><span>Agro Products</span></h3>
+
+    <!-- Flash Messages -->
+    {% with messages=get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <br>
+
+    <!-- Products Grid -->
+    <div class="row">
+        {% for p in query %}
+        <div class="col-sm-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <!-- Product Name -->
+                    <h5 class="card-title"><b>{{ p.productname }}</b></h5>
+                    
+                    <!-- Price -->
+                    <b>Price: {{ p.price }} per {{ p.unit }}</b>
+                    <hr>
+                    
+                    <!-- Product Description -->
+                    <p class="card-text">{{ p.productdesc }}</p>
+                    
+                    <!-- Farmer Details -->
+                    <p><b>Owner:</b> {{ p.username }}</p>
+                    <p><b>Contact No.:</b> {{ p.contact_num }}</p>
+                    <p><b>Farm Address:</b> {{ p.farmadd }}</p>
+                    
+                    <!-- Purchase Link -->
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to={{ p.email }}" target="_blank" class="btn btn-success">Purchase</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock body %}

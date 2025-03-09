@@ -1,0 +1,11 @@
+{
+    "params": {
+        "local_server": true,
+        "local_uri": "mysql+pymysql://root:@localhost/farming_db",
+        "prod_uri": "mysql+pymysql://root:password@localhost/farming_db",
+        "tag_line": "Heaven for programmers",
+        "gmail_user": "xyzzz@gmail.com",
+        "gmail_password": "hsc23644coju",
+        "secret_key": "547trhtrs7trh"
+    }
+}
